@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 import L from 'leaflet';
 
 import { useTracker } from 'hooks';
+import { commafy } from 'lib/util';
 
 import Layout from 'components/Layout';
 import Container from 'components/Container';
@@ -30,49 +31,49 @@ const IndexPage = () => {
     {
       primary: {
         label: 'Total Cases',
-        value: stats?.cases
+        value: stats ? commafy(stats?.cases) : '-'
       },
       secondary: {
         label: 'Per 1 Million',
-        value: stats?.casesPerOneMillion
+        value: stats ? commafy(stats?.casesPerOneMillion) : '-'
       }
     },
     {
       primary: {
         label: 'Total Deaths',
-        value: stats?.deaths
+        value: stats ? commafy(stats?.deaths) : '-'
       },
       secondary: {
         label: 'Per 1 Million',
-        value: stats?.deathsPerOneMillion
+        value: stats ? commafy(stats?.deathsPerOneMillion) : '-'
       }
     },
     {
       primary: {
         label: 'Total Tests',
-        value: stats?.tests
+        value: stats ? commafy(stats?.tests) : '-'
       },
       secondary: {
         label: 'Per 1 Million',
-        value: stats?.testsPerOneMillion
+        value: stats ? commafy(stats?.testsPerOneMillion) : '-'
       }
     },
     {
       primary: {
         label: 'Active Cases',
-        value: stats?.active
+        value: stats ? commafy(stats?.active) : '-'
       }
     },
     {
       primary: {
         label: 'Critical Cases',
-        value: stats?.critical
+        value: stats ? commafy(stats?.critical) : '-'
       }
     },
     {
       primary: {
         label: 'Recovered Cases',
-        value: stats?.recovered
+        value: stats ? commafy(stats?.recovered) : '-'
       }
     }
   ]
