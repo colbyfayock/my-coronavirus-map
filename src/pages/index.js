@@ -85,7 +85,12 @@ const IndexPage = () => {
    */
 
   async function mapEffect({ leafletElement: map } = {}) {
-    if ( !hasCountries ) return;
+    if ( !hasCountries || !map ) return;
+
+    map.eachLayer(layer => {
+      if ( layer?.options?.name === 'OpenStreetMap' ) return;
+      map.removeLayer(layer);
+    });
 
     const geoJson = {
       type: 'FeatureCollection',
