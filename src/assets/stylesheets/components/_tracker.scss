@@ -51,3 +51,18 @@
   }
 
 }
+
+.tracker-last-updated {
+
+  color: white;
+  background-color: $blue-grey-900;
+  padding: .8em 0;
+
+  p {
+    color: $blue-grey-300;
+    font-size: .8em;
+    text-align: center;
+    margin: 0;
+  }
+
+}

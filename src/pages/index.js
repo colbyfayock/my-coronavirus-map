@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import L from 'leaflet';
 
 import { useTracker } from 'hooks';
-import { commafy } from 'lib/util';
+import { commafy, friendlyDate } from 'lib/util';
 
 import Layout from 'components/Layout';
 import Container from 'components/Container';
@@ -193,6 +193,11 @@ const IndexPage = () => {
               );
             })}
           </ul>
+        </div>
+        <div className="tracker-last-updated">
+          <p>
+            Last Updated: { stats ? friendlyDate(stats?.updated) : '-' }
+          </p>
         </div>
       </div>
 
