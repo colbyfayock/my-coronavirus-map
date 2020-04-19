@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-leaflet",
-  "description": "A Gatsby starter with Leafet!",
-  "version": "0.2.2",
+  "name": "my-coronavirus-map",
+  "description": "Demo repo for blog post",
+  "version": "0.2.0",
   "author": "Colby Fayock <hello@colbyfayock.com>",
   "dependencies": {
     "axios": "^0.19.2",
@@ -65,11 +65,12 @@
       "yarn lint"
     ]
   },
+  "homepage": "https://my-coronavirus-map.netlify.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/colbyfayock/gatsby-starter-leaflet"
+    "url": "https://github.com/colbyfayock/my-coronavirus-map"
   },
   "bugs": {
-    "url": "https://github.com/colbyfayock/gatsby-starter-leaflet/issues"
+    "url": "https://github.com/colbyfayock/my-coronavirus-map/issues"
   }
 }
