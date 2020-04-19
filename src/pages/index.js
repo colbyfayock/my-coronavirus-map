@@ -14,6 +14,8 @@ const LOCATION = {
 const CENTER = [LOCATION.lat, LOCATION.lng];
 const DEFAULT_ZOOM = 2;
 
+const africanCountries = ['DZ', 'AO', 'BJ', 'BW', 'BF', 'BI', 'CM', 'CV', 'CF', 'KM', 'CD', 'DJ', 'EG', 'GQ', 'ER', 'ET', 'GA', 'GM', 'GH', 'GN', 'GW', 'CI', 'KE', 'LS', 'LR', 'LY', 'MG', 'MW', 'ML', 'MR', 'MU', 'MA', 'MZ', 'NA', 'NE', 'NG', 'CG', 'RE', 'RW', 'SH', 'ST', 'SN', 'SC', 'SL', 'SO', 'ZA', 'SS', 'SD', 'SZ', 'TZ', 'TG', 'TN', 'UG', 'EH', 'ZM'];
+
 const IndexPage = () => {
 
   /**
@@ -37,9 +39,15 @@ const IndexPage = () => {
 
     if ( !hasData ) return;
 
+    const africa = data.filter((country = {}) => {
+      const { countryInfo = {} } = country;
+      const { iso2 } = countryInfo;
+      return africanCountries.includes(iso2);
+    });
+
     const geoJson = {
       type: 'FeatureCollection',
-      features: data.map((country = {}) => {
+      features: africa.map((country = {}) => {
         const { countryInfo = {} } = country;
         const { lat, long: lng } = countryInfo;
         return {
@@ -105,6 +113,10 @@ const IndexPage = () => {
     });
 
     geoJsonLayers.addTo(map)
+
+    const bounds = geoJsonLayers.getBounds();
+
+    map.fitBounds(bounds);
   }
 
   const mapSettings = {
