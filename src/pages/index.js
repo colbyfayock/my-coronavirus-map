@@ -20,13 +20,62 @@ const IndexPage = () => {
     api: 'all'
   });
 
-  console.log('stats', stats)
-
   const { data: countries = [] } = useTracker({
     api: 'countries'
   });
 
   const hasCountries = Array.isArray(countries) && countries.length > 0;
+
+  const dashboardStats = [
+    {
+      primary: {
+        label: 'Total Cases',
+        value: stats?.cases
+      },
+      secondary: {
+        label: 'Per 1 Million',
+        value: stats?.casesPerOneMillion
+      }
+    },
+    {
+      primary: {
+        label: 'Total Deaths',
+        value: stats?.deaths
+      },
+      secondary: {
+        label: 'Per 1 Million',
+        value: stats?.deathsPerOneMillion
+      }
+    },
+    {
+      primary: {
+        label: 'Total Tests',
+        value: stats?.tests
+      },
+      secondary: {
+        label: 'Per 1 Million',
+        value: stats?.testsPerOneMillion
+      }
+    },
+    {
+      primary: {
+        label: 'Active Cases',
+        value: stats?.active
+      }
+    },
+    {
+      primary: {
+        label: 'Critical Cases',
+        value: stats?.critical
+      }
+    },
+    {
+      primary: {
+        label: 'Recovered Cases',
+        value: stats?.recovered
+      }
+    }
+  ]
 
   /**
    * mapEffect
@@ -120,7 +169,31 @@ const IndexPage = () => {
         <title>Home Page</title>
       </Helmet>
 
-      <Map {...mapSettings} />
+      <div className="tracker">
+        <Map {...mapSettings} />
+        <div className="tracker-stats">
+          <ul>
+            { dashboardStats.map(({ primary = {}, secondary = {} }, i) => {
+              return (
+                <li key={`Stat-${i}`} className="tracker-stat">
+                  { primary.value && (
+                    <p className="tracker-stat-primary">
+                      { primary.value }
+                      <strong>{ primary.label }</strong>
+                    </p>
+                  )}
+                  { secondary.value && (
+                    <p className="tracker-stat-secondary">
+                      { secondary.value }
+                      <strong>{ secondary.label }</strong>
+                    </p>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
 
       <Container type="content" className="text-center home-start">
         <h2>Still Getting Started?</h2>
