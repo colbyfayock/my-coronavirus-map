@@ -1,6 +1,6 @@
-# 🍃 Gatsby Leaflet Starter
+# 🦠 Coronavirus (COVID-19) Demo: Part 2
 
-Jumpstart your next Gatsby mapping project with Leaflet!
+Jumpstart your next Gatsby mapping project with Leaflet!	To build your own map from scratch, check out [Gatsby Starter Leaflet](https://github.com/colbyfayock/gatsby-starter-leaflet).
 
 ## What This Includes
 * [Yarn](https://yarnpkg.com/en/)
